@@ -33,4 +33,4 @@
 /config/application.yml
 
 #Ignore user-uploaded images
-/public/images/*
+/public/uploads/product/image/*
