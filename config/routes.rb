@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   
+  post 'order_complete' => 'cart#order_complete'
+
 end
