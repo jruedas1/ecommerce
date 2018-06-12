@@ -15,11 +15,13 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
+    authorize! :create, @category
     @category = Category.new
   end
 
   # GET /categories/1/edit
   def edit
+    authorize! :update, @category
   end
 
   # POST /categories
@@ -55,6 +57,7 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    authorize! :destroy, @category
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
