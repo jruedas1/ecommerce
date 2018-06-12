@@ -25,17 +25,21 @@
       </div>
       <div class="modal-body">
         <% if product.image.url.nil? == false %>
-          <p><%= image_tag product.image.url, class: "storefront-pics" %></p>
+          <p><%= image_tag product.image.url(:thumb), class: "storefront-pics" %></p>
         <% end %>
         <h3><%= link_to product.name, product %></h3>
         <p><%= number_to_currency product.price %></p>
         <p>made by <%= product.brand %></p>
       </div>
       <div class="modal-footer">
-        <p>
-          <!-- empty for now -->
-        </p>
-      </div>
+            <p>
+            <%= form_tag add_to_cart_path do %>
+              <%= hidden_field_tag :product_id, product.id %>
+              <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
+              <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
+            <% end %>
+            </p>
+          </div>
     </div>
   </div>
 </div>
